@@ -1,3 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@theme {
+  --color-pokedex-red: #dc0a2d;
+  --color-pokedex-yellow: #ffcb05;
+  --color-pokedex-blue: #3b5ba9;
+  --color-pokedex-screen: #0f1b2d;
+  --color-pokedex-glow: #7fd3ff;
+
+  --font-pixel: 'Press Start 2P', monospace;
+}
+
+@layer base {
+  body {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--color-pokedex-glow) 10%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 16px 16px;
+  }
+}

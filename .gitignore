@@ -39,6 +39,12 @@ testem.log
 /typings
 __screenshots__/
 
+# Claude Code
+CLAUDE.md
+CLAUDE.local.md
+**/CLAUDE.md
+**/CLAUDE.local.md
+
 # System files
 .DS_Store
 Thumbs.db
