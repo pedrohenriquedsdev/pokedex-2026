@@ -3,7 +3,22 @@
     <article
       class="flex flex-col items-center gap-3 rounded-2xl border-2 border-pokedex-glow bg-pokedex-blue/20 p-4 shadow-[0_0_8px_var(--color-pokedex-glow)]"
     >
-      {{ pokm.name }}
+      @if (pokm.sprite) {
+        <img [src]="pokm.sprite" [alt]="pokm.name" class="size-24 [image-rendering:pixelated]" />
+      }
+      <span class="font-pixel text-[10px] text-pokedex-yellow">#{{ pokm.id }}</span>
+      <h2 class="font-pixel text-xs capitalize text-pokedex-glow">
+        {{ paraTitleCase(pokm.name) }}
+      </h2>
+      <ul class="flex flex-wrap justify-center gap-1">
+        @for (tipo of pokm.types; track tipo) {
+          <li
+            class="rounded-full bg-pokedex-screen px-2 py-1 font-pixel text-[8px] capitalize text-zinc-100"
+          >
+            {{ tipo }}
+          </li>
+        }
+      </ul>
     </article>
   } @empty {
     <article

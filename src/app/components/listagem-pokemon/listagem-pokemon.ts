@@ -23,7 +23,7 @@ interface TipoPokemonRespostaHttp {
 interface PokemonRespostaHttp {
   id: number;
   name: string;
-  type: TipoPokemonRespostaHttp[];
+  types: TipoPokemonRespostaHttp[];
   sprites: {
     front_default: string | null;
   };
@@ -57,11 +57,15 @@ export class ListagemPokemon {
         detalhes.map((detalhe) => ({
           id: detalhe.id,
           name: detalhe.name,
-          types: detalhe.type.map((item) => item.type.name),
+          types: detalhe.types.map((item) => item.type.name),
           sprite: detalhe.sprites.front_default,
         })),
       ),
     ),
     { initialValue: null },
   );
+
+  protected paraTitleCase(texto: string): string {
+    return texto.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
+  }
 }
