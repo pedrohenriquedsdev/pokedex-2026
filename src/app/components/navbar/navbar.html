@@ -1,9 +1,15 @@
 <header class="sticky top-0 z-10 border-b-4 border-pokedex-red bg-pokedex-blue shadow-lg shadow-black/40">
   <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-    <a
-      href="/"
-      class="rounded-full border-2 border-pokedex-glow bg-pokedex-screen px-4 py-2 font-pixel text-sm text-pokedex-yellow shadow-[0_0_6px_var(--color-pokedex-glow)]"
-      >Pokédex</a
-    >
+    <a href="/"
+      class="rounded-full border-2 border-pokedex-glow bg-pokedex-screen px-4 py-2 font-pixel text-sm text-pokedex-yellow shadow-[0_0_6px_var(--color-pokedex-glow)]">Pokédex</a>
+    <ul class="flex items-center gap-2">
+      @for (item of itensNavbar; track item.titulo){
+      <li>
+        <a [href]="item.url"
+          class="font-pixel text-xs text-pokedex-glow rounded-md px-3 py-2 hover:bg-pokedex-screen hover:text-pokedex-yellow transition">{{
+          item.titulo }}</a>
+      </li>
+      }
+    </ul>
   </nav>
 </header>
