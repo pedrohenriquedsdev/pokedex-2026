@@ -23,5 +23,5 @@ export class ListagemPokemon {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
-  protected readonly objetoResposta = toSignal(this.http.get<ObjetoRespostaHttp>(this.apiUrl), { initialValue: null })
+  protected readonly objetoResposta = toSignal(this.http.get<ObjetoRespostaHttp>(this.apiUrl), { initialValue: null });
 }

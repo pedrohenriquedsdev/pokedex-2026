@@ -2,6 +2,11 @@
   @for (obj of objetoResposta()?.results ?? []; track obj.name) {
   <article
     class="flex flex-col items-center gap-3 rounded-2xl border-2 border-pokedex-glow bg-pokedex-blue/20 p-4 shadow-[0_0_8px_var(--color-pokedex-glow)]">
+    {{ obj.name }}
+  </article>
+  } @empty {
+  <article
+    class="flex flex-col items-center gap-3 rounded-2xl border-2 border-pokedex-glow bg-pokedex-blue/20 p-4 shadow-[0_0_8px_var(--color-pokedex-glow)]">
     <div class="size-24 animate-pulse rounded-full bg-pokedex-glow/20"></div>
     <div class="h-3 w-20 animate-pulse rounded bg-pokedex-glow/30"></div>
   </article>
