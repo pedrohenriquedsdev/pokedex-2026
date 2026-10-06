@@ -6,7 +6,7 @@
       @for (item of itensNavbar; track item.titulo){
       <li>
         <a [href]="item.url"
-          class="font-pixel text-xs text-pokedex-glow rounded-md px-3 py-2 hover:bg-pokedex-screen hover:text-pokedex-yellow transition">{{
+          class="inline-flex items-center rounded-full border-2 border-transparent px-3 py-2 font-pixel text-xs text-pokedex-glow transition hover:border-pokedex-glow hover:bg-pokedex-screen hover:text-pokedex-yellow">{{
           item.titulo }}</a>
       </li>
       }
