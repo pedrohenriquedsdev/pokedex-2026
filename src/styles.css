@@ -9,3 +9,13 @@
 
   --font-pixel: 'Press Start 2P', monospace;
 }
+
+@layer base {
+  body {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--color-pokedex-glow) 10%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 16px 16px;
+  }
+}
