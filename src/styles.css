@@ -19,3 +19,111 @@
     background-size: 16px 16px;
   }
 }
+
+/* Cor oficial de cada tipo, escolhida pelo atributo data-tipo do card */
+[data-tipo='normal'] {
+  --tipo-cor: #a8a77a;
+}
+[data-tipo='fire'] {
+  --tipo-cor: #ee8130;
+}
+[data-tipo='water'] {
+  --tipo-cor: #6390f0;
+}
+[data-tipo='electric'] {
+  --tipo-cor: #f7d02c;
+}
+[data-tipo='grass'] {
+  --tipo-cor: #7ac74c;
+}
+[data-tipo='ice'] {
+  --tipo-cor: #96d9d6;
+}
+[data-tipo='fighting'] {
+  --tipo-cor: #c22e28;
+}
+[data-tipo='poison'] {
+  --tipo-cor: #a33ea1;
+}
+[data-tipo='ground'] {
+  --tipo-cor: #e2bf65;
+}
+[data-tipo='flying'] {
+  --tipo-cor: #a98ff3;
+}
+[data-tipo='psychic'] {
+  --tipo-cor: #f95587;
+}
+[data-tipo='bug'] {
+  --tipo-cor: #a6b91a;
+}
+[data-tipo='rock'] {
+  --tipo-cor: #b6a136;
+}
+[data-tipo='ghost'] {
+  --tipo-cor: #735797;
+}
+[data-tipo='dragon'] {
+  --tipo-cor: #6f35fc;
+}
+[data-tipo='dark'] {
+  --tipo-cor: #705746;
+}
+[data-tipo='steel'] {
+  --tipo-cor: #b7b7ce;
+}
+[data-tipo='fairy'] {
+  --tipo-cor: #d685ad;
+}
+
+/* Textura de tela de Pokédex: linhas finas sobre toda a página */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgb(0 0 0 / 0.15) 3px
+  );
+  z-index: 50;
+}
+
+/* Cards: borda na cor do tipo, elevação no hover e sprite flutuando.
+   Estilos fora de @layer têm prioridade sobre os utilitários do Tailwind. */
+.pokemon-card {
+  border-color: var(--tipo-cor, var(--color-pokedex-glow));
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px var(--tipo-cor, var(--color-pokedex-glow));
+}
+
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.pokemon-sprite {
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+/* Quem prefere menos movimento no sistema não vê as animações */
+@media (prefers-reduced-motion: reduce) {
+  .pokemon-card,
+  .pokemon-sprite {
+    animation: none;
+    transition: none;
+  }
+}
