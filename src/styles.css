@@ -1,1 +1,9 @@
 @import 'tailwindcss';
+
+@theme {
+  --color-pokedex-red: #dc0a2d;
+  --color-pokedex-yellow: #ffcb05;
+  --color-pokedex-blue: #3b5ba9;
+  --color-pokedex-screen: #0f1b2d;
+  --color-pokedex-glow: #7fd3ff;
+}
