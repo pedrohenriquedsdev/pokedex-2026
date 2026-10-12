@@ -9,4 +9,4 @@ import { HeroPokebola } from './components/hero-pokebola/hero-pokebola';
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
-export class App {}
+export class App { }
