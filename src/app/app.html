@@ -1,3 +1,26 @@
+<!-- Painel de luzes no estilo Pokédex clássica -->
+<div
+  aria-hidden="true"
+  class="relative overflow-hidden bg-pokedex-red px-4 py-2 shadow-[inset_0_-4px_10px_rgb(0_0_0/0.35)]"
+>
+  <div class="mx-auto flex max-w-5xl items-center gap-3">
+    <!-- Lente grande, como a "câmera" da Pokédex -->
+    <span
+      class="relative size-8 rounded-full border-2 border-zinc-900/40 bg-pokedex-glow shadow-[inset_0_2px_5px_rgb(255_255_255/0.6),0_0_12px_var(--color-pokedex-glow)]"
+    >
+      <span class="absolute top-1 left-1.5 size-2 rounded-full bg-white/80 blur-[1px]"></span>
+    </span>
+    <!-- Luzes pequenas piscando -->
+    <span
+      class="size-2.5 animate-pulse rounded-full bg-pokedex-yellow shadow-[0_0_6px_var(--color-pokedex-yellow)]"
+    ></span>
+    <span
+      class="size-2.5 rounded-full bg-emerald-400 shadow-[0_0_6px_theme(colors.emerald.400)]"
+    ></span>
+    <span class="size-2.5 rounded-full bg-zinc-900/60 shadow-[inset_0_0_3px_rgb(0_0_0/0.6)]"></span>
+  </div>
+</div>
+
 <app-navbar></app-navbar>
 
 <main class="mx-auto max-w-5xl px-4 py-8">
