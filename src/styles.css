@@ -94,11 +94,33 @@ body::after {
 /* Cards: borda na cor do tipo, elevação no hover e sprite flutuando.
    Estilos fora de @layer têm prioridade sobre os utilitários do Tailwind. */
 .pokemon-card {
+  position: relative;
+  overflow: hidden;
   border-color: var(--tipo-cor, var(--color-pokedex-glow));
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
   animation: aparecer-cartao 0.5s ease-out backwards;
+}
+
+/* Reflexo de vidro que atravessa o card quando o mouse passa por cima */
+.pokemon-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgb(255 255 255 / 0.25) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.pokemon-card:hover::before {
+  transform: translateX(120%);
 }
 
 /* Cascata: cada card aparece um pouco depois do anterior */
@@ -169,6 +191,7 @@ body::after {
 /* Quem prefere menos movimento no sistema não vê as animações */
 @media (prefers-reduced-motion: reduce) {
   .pokemon-card,
+  .pokemon-card::before,
   .pokemon-sprite {
     animation: none;
     transition: none;
