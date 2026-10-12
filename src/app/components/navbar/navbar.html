@@ -1,28 +1,39 @@
 <header
-  class="sticky top-0 z-40 border-b border-pokedex-glow/30 bg-pokedex-screen/70 shadow-[0_8px_30px_rgb(0_0_0/0.45)] backdrop-blur-md"
+  class="sticky top-0 z-40 overflow-hidden border-b border-pokedex-glow/30 bg-pokedex-screen/80 shadow-[0_8px_30px_rgb(0_0_0/0.45)] backdrop-blur-md"
 >
-  <!-- Filete vermelho neon no topo da barra -->
+  <!-- Filete de "plástico" no topo, nas cores da Pokédex -->
   <div
-    class="h-0.5 bg-gradient-to-r from-transparent via-pokedex-red to-transparent shadow-[0_0_10px_var(--color-pokedex-red)]"
+    class="h-1.5 bg-gradient-to-r from-pokedex-red via-pokedex-yellow to-pokedex-red shadow-[0_0_10px_var(--color-pokedex-red)]"
   ></div>
 
-  <nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+  <nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-3">
     <a
       href="/"
       class="group flex items-center gap-3 rounded-full px-2 py-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pokedex-glow"
     >
-      <!-- Mini pokébola: metade vermelha, metade branca, botão central -->
+      <!-- Lente da Pokédex: o "olho" que identifica a marca -->
       <span
-        class="relative size-7 rounded-full border-2 border-pokedex-glow bg-linear-to-b from-pokedex-red from-50% to-zinc-100 to-50% shadow-[0_0_10px_var(--color-pokedex-glow)]"
+        aria-hidden="true"
+        class="relative flex size-9 shrink-0 items-center justify-center rounded-full border-2 border-zinc-900/40 bg-pokedex-glow shadow-[inset_0_2px_5px_rgb(255_255_255/0.6),0_0_14px_var(--color-pokedex-glow)] transition group-hover:shadow-[inset_0_2px_5px_rgb(255_255_255/0.6),0_0_22px_var(--color-pokedex-glow)]"
       >
-        <span
-          class="absolute top-1/2 left-1/2 size-2.5 -translate-1/2 rounded-full border-2 border-pokedex-screen bg-zinc-100"
-        ></span>
+        <span class="absolute top-1.5 left-2 size-2 rounded-full bg-white/80 blur-[1px]"></span>
       </span>
-      <span
-        class="font-pixel text-sm text-pokedex-glow drop-shadow-[0_0_6px_var(--color-pokedex-glow)] transition group-hover:text-pokedex-yellow"
-        >Pokédex</span
-      >
+
+      <span class="flex items-center gap-2">
+        <span
+          class="font-pixel text-sm text-pokedex-glow drop-shadow-[0_0_6px_var(--color-pokedex-glow)] transition group-hover:text-pokedex-yellow"
+          >Pokédex</span
+        >
+        <!-- Luzes de status, só decoração -->
+        <span aria-hidden="true" class="flex items-center gap-1">
+          <span
+            class="size-1.5 animate-pulse rounded-full bg-pokedex-yellow shadow-[0_0_6px_var(--color-pokedex-yellow)]"
+          ></span>
+          <span
+            class="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_theme(colors.emerald.400)]"
+          ></span>
+        </span>
+      </span>
     </a>
 
     <ul class="flex items-center gap-1 sm:gap-2">
