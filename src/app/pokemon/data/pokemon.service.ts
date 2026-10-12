@@ -6,6 +6,15 @@ import { Pokemon } from "../pokemon.model";
 
 export const POKE_API_URL = new InjectionToken<string>('POKE_API_URL');
 
+function mapearRespostaPokemon(dto: PokemonRespostaHttp): Pokemon {
+  return {
+    id: dto.id,
+    name: dto.name,
+    types: dto.types.map((item) => item.type.name),
+    sprite: dto.sprites.front_default,
+  }
+}
+
 @Injectable({ providedIn: 'root' }) // UMA ÚNICA INSTÂNCIA: Auto um service
 export class PokemonService {
   private readonly http = inject(HttpClient);
@@ -19,12 +28,7 @@ export class PokemonService {
         return forkJoin(requisicoes);
       }),
       map((detalhes: PokemonRespostaHttp[]): Pokemon[] =>
-        detalhes.map((detalhe) => ({
-          id: detalhe.id,
-          name: detalhe.name,
-          types: detalhe.types.map((item) => item.type.name),
-          sprite: detalhe.sprites.front_default,
-        })),
+        detalhes.map(mapearRespostaPokemon),
       ),
     );
   }
