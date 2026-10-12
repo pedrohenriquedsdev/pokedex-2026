@@ -98,6 +98,53 @@ body::after {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  animation: aparecer-cartao 0.5s ease-out backwards;
+}
+
+/* Cascata: cada card aparece um pouco depois do anterior */
+@keyframes aparecer-cartao {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pokemon-card:nth-child(1) {
+  animation-delay: 0ms;
+}
+.pokemon-card:nth-child(2) {
+  animation-delay: 60ms;
+}
+.pokemon-card:nth-child(3) {
+  animation-delay: 120ms;
+}
+.pokemon-card:nth-child(4) {
+  animation-delay: 180ms;
+}
+.pokemon-card:nth-child(5) {
+  animation-delay: 240ms;
+}
+.pokemon-card:nth-child(6) {
+  animation-delay: 300ms;
+}
+.pokemon-card:nth-child(7) {
+  animation-delay: 360ms;
+}
+.pokemon-card:nth-child(8) {
+  animation-delay: 420ms;
+}
+.pokemon-card:nth-child(9) {
+  animation-delay: 480ms;
+}
+.pokemon-card:nth-child(10) {
+  animation-delay: 540ms;
+}
+.pokemon-card:nth-child(n + 11) {
+  animation-delay: 600ms;
 }
 
 .pokemon-card:hover {
