@@ -101,6 +101,7 @@ body::after {
     transform 0.2s ease,
     box-shadow 0.2s ease;
   animation: aparecer-cartao 0.5s ease-out backwards;
+  animation-delay: var(--atraso-cartao, 0ms);
 }
 
 /* Reflexo de vidro que atravessa o card quando o mouse passa por cima */
@@ -135,38 +136,39 @@ body::after {
   }
 }
 
-.pokemon-card:nth-child(1) {
-  animation-delay: 0ms;
+/* O atraso é definido no link (filho direto do grid) e herdado pelo card dentro dele */
+.pokemon-card-link:nth-child(1) {
+  --atraso-cartao: 0ms;
 }
-.pokemon-card:nth-child(2) {
-  animation-delay: 60ms;
+.pokemon-card-link:nth-child(2) {
+  --atraso-cartao: 60ms;
 }
-.pokemon-card:nth-child(3) {
-  animation-delay: 120ms;
+.pokemon-card-link:nth-child(3) {
+  --atraso-cartao: 120ms;
 }
-.pokemon-card:nth-child(4) {
-  animation-delay: 180ms;
+.pokemon-card-link:nth-child(4) {
+  --atraso-cartao: 180ms;
 }
-.pokemon-card:nth-child(5) {
-  animation-delay: 240ms;
+.pokemon-card-link:nth-child(5) {
+  --atraso-cartao: 240ms;
 }
-.pokemon-card:nth-child(6) {
-  animation-delay: 300ms;
+.pokemon-card-link:nth-child(6) {
+  --atraso-cartao: 300ms;
 }
-.pokemon-card:nth-child(7) {
-  animation-delay: 360ms;
+.pokemon-card-link:nth-child(7) {
+  --atraso-cartao: 360ms;
 }
-.pokemon-card:nth-child(8) {
-  animation-delay: 420ms;
+.pokemon-card-link:nth-child(8) {
+  --atraso-cartao: 420ms;
 }
-.pokemon-card:nth-child(9) {
-  animation-delay: 480ms;
+.pokemon-card-link:nth-child(9) {
+  --atraso-cartao: 480ms;
 }
-.pokemon-card:nth-child(10) {
-  animation-delay: 540ms;
+.pokemon-card-link:nth-child(10) {
+  --atraso-cartao: 540ms;
 }
-.pokemon-card:nth-child(n + 11) {
-  animation-delay: 600ms;
+.pokemon-card-link:nth-child(n + 11) {
+  --atraso-cartao: 600ms;
 }
 
 .pokemon-card:hover {
