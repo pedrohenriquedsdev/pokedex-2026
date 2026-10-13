@@ -2,7 +2,6 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter, Routes } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { POKE_API_URL } from './pokemon/data/pokemon.service';
-import { ListagemPokemon } from './pokemon/listagem/listagem-pokemon';
 
 const routes: Routes = [
   {
@@ -20,6 +19,13 @@ const routes: Routes = [
     loadComponent: () =>
       import('./pokemon/detalhes/detalhes-pokemon').then((component) => component.DetalhesPokemon),
   },
+  {
+    path: 'favoritos',
+    loadComponent: () =>
+      import('./pokemon/favoritos/favoritos-pokemon').then(
+        (component) => component.FavoritosPokemon,
+      ),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {
@@ -30,6 +36,6 @@ export const appConfig: ApplicationConfig = {
     {
       provide: POKE_API_URL,
       useValue: 'https://pokeapi.co/api/v2/pokemon/',
-    }
-  ]
+    },
+  ],
 };

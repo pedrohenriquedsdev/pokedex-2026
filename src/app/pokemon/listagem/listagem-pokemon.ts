@@ -5,6 +5,7 @@ import { Pokemon, PokemonTypeViewModel } from '../pokemon.model';
 import { paraTiposViewModel, paraTitleCase } from '../pokemon.util';
 import { map } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { HeroPokebola } from '../../components/hero-pokebola/hero-pokebola';
 
 interface PokemonCardViewModel {
   readonly id: number;
@@ -29,7 +30,7 @@ function paraCardViewModel(dto: Pokemon): PokemonCardViewModel {
 }
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, HeroPokebola],
   selector: 'app-listagem-pokemon',
   templateUrl: './listagem-pokemon.html',
 })

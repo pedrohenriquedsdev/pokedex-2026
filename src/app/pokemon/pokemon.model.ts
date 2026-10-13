@@ -24,3 +24,12 @@ export interface PokemonTypeViewModel {
   readonly displayName: string;
   readonly color: string;
 }
+
+export interface PokemonFavorite {
+  readonly id: number;
+  readonly name: string;
+  readonly displayName: string;
+  readonly number: string;
+  readonly spriteUrl: string | null;
+  readonly types: readonly PokemonTypeViewModel[];
+}

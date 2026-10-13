@@ -40,7 +40,8 @@
       @for (item of itensNavbar; track item.titulo) {
         <li>
           <a
-            [href]="item.url"
+            [routerLink]="item.url"
+            routerLinkActive="text-pokedex-glow"
             class="group relative inline-flex items-center rounded-full px-3 py-2 font-pixel text-[10px] tracking-wide text-zinc-300 transition hover:text-pokedex-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pokedex-glow"
           >
             {{ item.titulo }}
