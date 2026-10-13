@@ -4,16 +4,22 @@ import { provideHttpClient } from '@angular/common/http';
 import { POKE_API_URL } from './pokemon/data/pokemon.service';
 import { ListagemPokemon } from './pokemon/listagem/listagem-pokemon';
 
-export const routes: Routes = [
+const routes: Routes = [
   {
     path: '',
     redirectTo: 'pokemon',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'pokemon',
-    component: ListagemPokemon
-  }
+    loadComponent: () =>
+      import('./pokemon/listagem/listagem-pokemon').then((component) => component.ListagemPokemon),
+  },
+  {
+    path: 'pokemon/:name',
+    loadComponent: () =>
+      import('./pokemon/detalhes/detalhes-pokemon').then((component) => component.DetalhesPokemon),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {
