@@ -25,3 +25,41 @@ export interface PokemonRespostaHttp {
   };
 }
 
+export interface HabilidadePokemonRespostaHttp {
+  ability: {
+    name: string;
+  };
+}
+
+export interface EstatisticaPokemonRespostaHttp {
+  base_stat: number;
+  stat: {
+    name: string;
+  };
+}
+
+export interface SpritesPokemonDetalhesRespostaHttp {
+  front_default: string | null;
+  other?: {
+    'official-artwork'?: {
+      front_default: string | null;
+    };
+  };
+}
+
+export interface CriesPokemonRespostaHttp {
+  latest: string | null;
+  legacy: string | null;
+}
+
+export interface PokemonDetalhesRespostaHttp {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  types: TipoPokemonRespostaHttp[];
+  sprites: SpritesPokemonDetalhesRespostaHttp;
+  cries?: CriesPokemonRespostaHttp;
+  abilities: HabilidadePokemonRespostaHttp[];
+  stats: EstatisticaPokemonRespostaHttp[];
+}
