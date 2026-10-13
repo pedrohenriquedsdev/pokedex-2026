@@ -2,8 +2,19 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter, Routes } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { POKE_API_URL } from './pokemon/data/pokemon.service';
+import { ListagemPokemon } from './pokemon/listagem/listagem-pokemon';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'pokemon',
+    pathMatch: 'full'
+  },
+  {
+    path: 'pokemon',
+    component: ListagemPokemon
+  }
+];
 
 export const appConfig: ApplicationConfig = {
   providers: [
