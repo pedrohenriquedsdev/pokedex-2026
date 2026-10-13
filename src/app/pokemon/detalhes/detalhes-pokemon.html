@@ -45,8 +45,28 @@
       class="overflow-hidden rounded-3xl border-2 border-[var(--tipo-cor)] bg-pokedex-blue/20 shadow-[0_0_30px_var(--tipo-cor)]"
     >
       <div
-        class="flex flex-col items-center gap-3 bg-[color-mix(in_srgb,var(--tipo-cor)_18%,transparent)] p-6 text-center sm:p-8"
+        class="relative flex flex-col items-center gap-3 bg-[color-mix(in_srgb,var(--tipo-cor)_18%,transparent)] p-6 text-center sm:p-8"
       >
+        <button
+          type="button"
+          (click)="alternarFavorito()"
+          [attr.aria-pressed]="ehFavorito()"
+          [attr.aria-label]="
+            ehFavorito()
+              ? 'Remover ' + p.displayName + ' dos favoritos'
+              : 'Adicionar ' + p.displayName + ' aos favoritos'
+          "
+          class="absolute top-4 right-4 flex size-11 items-center justify-center rounded-full border-2 border-pokedex-glow/30 bg-pokedex-screen/70 backdrop-blur-sm transition hover:scale-105 hover:border-pokedex-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pokedex-glow active:scale-95"
+        >
+          <svg
+            lucideHeart
+            [attr.fill]="ehFavorito() ? 'currentColor' : 'none'"
+            class="size-5 transition-colors"
+            [class.text-pokedex-red]="ehFavorito()"
+            [class.text-zinc-300]="!ehFavorito()"
+          ></svg>
+        </button>
+
         <span class="font-pixel text-xs text-pokedex-yellow">{{ p.number }}</span>
         @if (p.imageUrl ?? p.spriteUrl) {
           <img

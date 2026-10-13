@@ -1,9 +1,11 @@
 import { catchError, forkJoin, map, Observable, of, switchMap } from 'rxjs';
 
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { LucideHeart } from '@lucide/angular';
 
+import { PokemonFavoritesService } from '../data/pokemon-favorites.service';
 import { PokemonService } from '../data/pokemon.service';
 import { PokemonDetails, PokemonTypeViewModel } from '../pokemon.model';
 import { obterCorDeBackgroundDosTipos, paraTiposViewModel, paraTitleCase } from '../pokemon.util';
@@ -130,7 +132,7 @@ function paraDetalhesViewModel(
 }
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, LucideHeart],
   selector: 'app-detalhes-pokemon',
   styleUrl: './detalhes-pokemon.css',
   templateUrl: './detalhes-pokemon.html',
@@ -138,6 +140,7 @@ function paraDetalhesViewModel(
 export class DetalhesPokemon {
   private readonly route = inject(ActivatedRoute); // Permite acesso à dados da rota atual
   private readonly pokemonService = inject(PokemonService);
+  private readonly pokemonFavoritesService = inject(PokemonFavoritesService);
 
   protected readonly pokemon = toSignal(
     this.route.paramMap.pipe(
@@ -153,6 +156,28 @@ export class DetalhesPokemon {
       map(({ pokemon, previous, next }) => paraDetalhesViewModel(pokemon, previous, next)),
     ),
   );
+
+  protected readonly ehFavorito = computed(() => {
+    const atual = this.pokemon();
+    return atual ? this.pokemonFavoritesService.ehFavorito(atual.name) : false;
+  });
+
+  protected alternarFavorito(): void {
+    const atual = this.pokemon();
+
+    if (!atual) {
+      return;
+    }
+
+    this.pokemonFavoritesService.alternar({
+      id: atual.id,
+      name: atual.name,
+      displayName: atual.displayName,
+      number: atual.number,
+      spriteUrl: atual.spriteUrl,
+      types: atual.types,
+    });
+  }
 
   private buscarVizinho(id: number): Observable<PokemonDetails | null> {
     if (id < 1) {
