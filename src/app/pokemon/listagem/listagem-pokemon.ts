@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { PokemonService } from '../data/pokemon.service';
 import { Pokemon } from '../pokemon.model';
 import { map } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 interface PokemonTypeViewModel {
   readonly name: string;
@@ -11,6 +12,7 @@ interface PokemonTypeViewModel {
 
 interface PokemonCardViewModel {
   readonly id: number;
+  readonly name: string; // UTILIZAR
   readonly displayName: string;
   readonly imageUrl: string | null;
   readonly imageAlt: string;
@@ -30,6 +32,7 @@ function paraCardViewModel(dto: Pokemon): PokemonCardViewModel {
 
   return {
     id: dto.id,
+    name: dto.name,
     displayName: displayName,
     imageUrl: dto.sprite,
     imageAlt: `Imagem de ${displayName}`,
@@ -38,7 +41,7 @@ function paraCardViewModel(dto: Pokemon): PokemonCardViewModel {
 }
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-listagem-pokemon',
   templateUrl: './listagem-pokemon.html',
 })
