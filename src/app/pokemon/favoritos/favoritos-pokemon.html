@@ -1,0 +1,81 @@
+<main class="mx-auto max-w-5xl px-4 py-8">
+  <section>
+    <div class="mb-8 flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <p class="font-pixel text-[10px] tracking-widest text-pokedex-yellow uppercase">
+          Sua coleção
+        </p>
+        <h1
+          class="mt-2 font-pixel text-xl text-pokedex-glow drop-shadow-[0_0_10px_var(--color-pokedex-glow)] sm:text-2xl"
+        >
+          Favoritos
+        </h1>
+      </div>
+      <span
+        class="rounded-full border-2 border-pokedex-glow/40 bg-pokedex-blue/20 px-4 py-2 font-pixel text-xs text-pokedex-glow"
+      >
+        {{ pokemonFavoritesService.quantidade() }}
+        {{ pokemonFavoritesService.quantidade() === 1 ? 'pokémon' : 'pokémons' }}
+      </span>
+    </div>
+
+    @if (pokemonFavoritesService.lista().length > 0) {
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        @for (fav of pokemonFavoritesService.lista(); track fav.name) {
+          <article
+            [attr.data-tipo]="fav.types[0]?.name"
+            class="pokemon-card relative flex flex-col items-center gap-3 rounded-2xl border-2 bg-pokedex-blue/20 p-4 shadow-[0_0_8px_var(--tipo-cor)]"
+          >
+            <button
+              type="button"
+              (click)="pokemonFavoritesService.alternar(fav)"
+              [attr.aria-label]="'Remover ' + fav.displayName + ' dos favoritos'"
+              class="absolute top-2 right-2 z-10 flex size-8 items-center justify-center rounded-full border-2 border-pokedex-glow/30 bg-pokedex-screen/70 text-pokedex-red transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pokedex-glow"
+            >
+              <svg lucideHeart fill="currentColor" class="size-4"></svg>
+            </button>
+
+            <a
+              [routerLink]="['/pokemon', fav.name]"
+              class="flex flex-col items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pokedex-glow"
+            >
+              @if (fav.spriteUrl) {
+                <img
+                  [src]="fav.spriteUrl"
+                  [alt]="fav.displayName"
+                  class="pokemon-sprite size-20 [image-rendering:pixelated]"
+                />
+              } @else {
+                <div
+                  class="flex size-20 items-center justify-center rounded-full border-2 border-pokedex-glow/20 bg-pokedex-screen/60 font-pixel text-[9px] text-zinc-500"
+                >
+                  N/A
+                </div>
+              }
+              <span class="font-pixel text-[10px] text-pokedex-yellow">{{ fav.number }}</span>
+              <h2 class="font-pixel text-xs text-pokedex-glow capitalize">
+                {{ fav.displayName }}
+              </h2>
+            </a>
+          </article>
+        }
+      </div>
+    } @else {
+      <div
+        class="flex flex-col items-center gap-4 rounded-3xl border-2 border-dashed border-pokedex-glow/30 bg-pokedex-blue/10 px-6 py-16 text-center"
+      >
+        <svg lucideHeart class="size-10 text-pokedex-glow/40"></svg>
+        <p class="font-pixel text-xs text-pokedex-glow">Nenhum favorito ainda</p>
+        <p class="max-w-sm text-sm text-zinc-400">
+          Abra a ficha de um Pokémon e toque no coração para guardá-lo aqui.
+        </p>
+        <a
+          [routerLink]="['/pokemon']"
+          class="mt-2 rounded-full border-2 border-pokedex-glow/40 px-4 py-2 font-pixel text-[10px] text-pokedex-glow transition hover:border-pokedex-glow hover:text-pokedex-yellow"
+        >
+          Ver Pokédex
+        </a>
+      </div>
+    }
+  </section>
+</main>
